@@ -17,7 +17,7 @@ def food_index
     https.use_ssl = true
 
     request = Net::HTTP::Get.new(url)
-    request["x-api-key"] = 'vo2af6MVAbCVZa0h4fYKoHdtjeHUxaRFDjEyGyia'
+    request["x-api-key"] = ENV["FDC_KEY"]
 
     response = https.request(request)
     index = response.read_body
