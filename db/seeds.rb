@@ -11,7 +11,7 @@ require "uri"
 require "net/http"
 
 def food_index
-    url = URI("https://api.nal.usda.gov/fdc/v1/foods/search?dataType=SR Legacy, Foundation&currentPage=1&sortOrder=desc&pageSize=8000")
+    url = URI("https://api.nal.usda.gov/fdc/v1/foods/search?dataType=SR Legacy, Foundation&currentPage=1&sortOrder=desc&pageSize=100")
 
     https = Net::HTTP.new(url.host, url.port);
     https.use_ssl = true

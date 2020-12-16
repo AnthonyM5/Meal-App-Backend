@@ -7,7 +7,7 @@ class FoodsController < ApplicationController
 
     def show 
         food = Food.find_by(id: params[:id])
-        render json: food
+        render json: food, serializer: FoodShowSerializer 
     end
 
 
