@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
     def login
       user = User.find_by_username(params[:username])
       if user && user.authenticate(params[:password])
-        byebug
-        render json: user
+        token = encode_token(user.id)
+        render json: {user: UserSerializer.new(user), token: token}
+
       else
         render json: {error: "EITHER THE USERNAME OR PASSWORD WAS INCORRECT!!!!!!!!!!!"}
       end

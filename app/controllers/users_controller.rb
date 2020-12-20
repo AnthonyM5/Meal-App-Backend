@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params) 
-        render json: user
+        token = encode_token(user.id)
+        render json: {user: UserSerializer.new(user), token: token}
     end
 
     def index

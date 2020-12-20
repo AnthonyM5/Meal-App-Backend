@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'active_model_serializers', '~> 0.10.0'
-
+gem 'jwt'
 gem 'dotenv-rails', groups: [:development, :test]
 
 
