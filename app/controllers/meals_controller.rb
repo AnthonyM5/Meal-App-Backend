@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
     def create
-        meal = Meal.create(name: params[:name])
+        meal = Meal.create(meal_params)
         render json: meal
     end
 
@@ -13,6 +13,10 @@ class MealsController < ApplicationController
      def show
         meal = Meal.find_by(id: params[:id])
         render json: meal, include: [:ingredients]
+    end
+
+    def meal_params
+        params.permit(:name)
     end
 
 
