@@ -10,5 +10,12 @@ class SessionsController < ApplicationController
         render json: {error: "EITHER THE USERNAME OR PASSWORD WAS INCORRECT!!!!!!!!!!!"}
       end
     end
+
+    def autologin
+        render json: {user: UserSerializer.new(logged_in_user)}
+    end
+
+
+
   
   end
