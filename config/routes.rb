@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :meals do 
     resources :ingredients
   end
-  
+
   resources :users
+  post '/meals', to: "meals#create"
   post '/login', to: "sessions#login"
   post '/autologin', to: "sessions#autologin"
   resources :foods
