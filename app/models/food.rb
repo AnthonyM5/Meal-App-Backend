@@ -1,6 +1,10 @@
 class Food < ApplicationRecord
-    include ActiveModel::Serializers::JSON
+    has_many :ingredients
+    has_many :meals, through: :ingredients
     serialize :nutrient_hash
+    include ActiveModel::Serializers::JSON
+    
+    
 
 
 
