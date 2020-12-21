@@ -1,7 +1,8 @@
 class MealsController < ApplicationController
 
     def create
-        meal = Meal.create(meal_params)
+        user = User.find_by_id(params['user'])
+        meal = user.meals.create(meal_params)
         render json: meal
     end
 
