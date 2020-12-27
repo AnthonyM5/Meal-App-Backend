@@ -7,7 +7,6 @@ class MealsController < ApplicationController
     end
 
     def index 
-        
         user = logged_in_user
         meals = user.meals
         render json: meals, include: [:ingredients]
