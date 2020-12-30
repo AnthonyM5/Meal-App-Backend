@@ -14,16 +14,9 @@ class MealsController < ApplicationController
 
      def show
         meal = Meal.find_by(id: params[:id])
-        @included = []
-        # @calculations = 0
-        meal.ingredients.each do |food| 
-            included = Food.where(id: food.food_id)
-            included.each do |f|
-                @included << f
-                # @calculations += f.calories
-            end
-        end  
-        render json: meal, include: [@included]
+
+
+        render json:  meal
     end
 
     def meal_params

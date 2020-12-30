@@ -11,6 +11,7 @@ gem 'pg'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'jwt'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'will_paginate', '~> 3.1.0'
 
 
 # Use Puma as the app server

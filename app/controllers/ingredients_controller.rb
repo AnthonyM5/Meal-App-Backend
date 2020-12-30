@@ -9,15 +9,16 @@ class IngredientsController < ApplicationController
     def index
         ingredients = @meal.ingredients
         @included = []
-        # @calculations = 0
+        @calculations = 0
         ingredients.each do |food| 
             included = Food.where(id: food.food_id)
             included.each do |f|
                 @included << f
-                # @calculations += f.calories
+                @calculations += f.calories
             end
         end  
-        render json: @included
+
+        render json: @included, include: ingredients
     end
 
     def get_meal 
