@@ -2,7 +2,8 @@ class MealsController < ApplicationController
 
     def create
         user = User.find_by_id(params['user'])
-        meal = user.meals.create(meal_params)
+        byebug
+        meal = user.meals.create(name: params[:name], img_url: params[:imgUrl])
         render json: meal
     end
 
@@ -20,7 +21,7 @@ class MealsController < ApplicationController
     end
 
     def meal_params
-        params.permit(:name)
+        params.permit(:name, :img_url)
     end
 
 
