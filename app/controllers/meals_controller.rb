@@ -2,7 +2,7 @@ class MealsController < ApplicationController
 
     def create
         user = User.find_by_id(params['user'])
-        byebug
+        # byebug
         meal = user.meals.create(name: params[:name], img_url: params[:imgUrl])
         render json: meal
     end

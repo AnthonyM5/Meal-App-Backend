@@ -17,7 +17,8 @@ class IngredientsController < ApplicationController
                 @calculations += f.calories
             end
         end  
-
+       
+        @meal.update(calorie_count: @calculations)
         render json: @included, include: ingredients
     end
 
