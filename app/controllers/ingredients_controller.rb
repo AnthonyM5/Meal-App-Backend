@@ -4,6 +4,18 @@ class IngredientsController < ApplicationController
     def create
         # byebug
         @meal.ingredients.create({food_id: params[:id]})
+
+        ingredients = @meal.ingredients
+        @included = []
+        @calculations = 0
+        ingredients.each do |food| 
+            included = Food.where(id: food.food_id)
+            included.each do |f|
+                @included << f
+                @calculations += f.calories
+            end
+        end
+        @meal.update(calorie_count: @calculations)
     end
 
     def index
@@ -16,10 +28,10 @@ class IngredientsController < ApplicationController
                 @included << f
                 @calculations += f.calories
             end
-        end  
+        end
        
         @meal.update(calorie_count: @calculations)
-        render json: @included, include: ingredients
+        render json: @included
     end
 
     def get_meal 
