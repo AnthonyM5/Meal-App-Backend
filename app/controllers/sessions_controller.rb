@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
       user = User.find_by_username(params[:username])
       if user && user.authenticate(params[:password])
         token = encode_token(user.id)
-        render json: {user: UserSerializer.new(user), token: token}
+        render json: {user: {id: user.id, username: user.username}, token: token}
 
       else
         render json: {error: "EITHER THE USERNAME OR PASSWORD WAS INCORRECT!!!!!!!!!!!"}
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     end
 
     def autologin
-        render json: {user: UserSerializer.new(logged_in_user)}
+        render json: {user: {id: logged_in_user.id, username:logged_in_user.username}}
     end
 
 
