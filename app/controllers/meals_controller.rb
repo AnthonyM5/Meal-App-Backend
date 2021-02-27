@@ -2,9 +2,16 @@ class MealsController < ApplicationController
 
     def create
         user = User.find_by_id(params['user'])
-        # byebug
         meal = user.meals.create(name: params[:name], img_url: params[:imgUrl])
-        render json: meal
+        
+       
+
+        if meal.valid? 
+            render json: meal
+        else
+            render json: { errors: meal.errors.full_messages.to_sentence }
+        end
+
     end
 
     def index 
