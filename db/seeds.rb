@@ -31,7 +31,5 @@ end
 
 
 Food.find_in_batches do |food|
-Food.all.each do |food|
     food.food_nutrient_hash(food)
-end
 end
