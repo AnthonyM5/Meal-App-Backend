@@ -10,6 +10,10 @@
 require "uri"
 require "net/http"
 
+
+### Initial Seed uses too much memory so we have to run the update methods separately 
+
+
 # def food_index
 #     url = URI("https://api.nal.usda.gov/fdc/v1/foods/search?dataType=SR Legacy, Foundation&currentPage=1&sortOrder=desc&pageSize=10000")
 

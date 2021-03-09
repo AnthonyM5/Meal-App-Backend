@@ -11,10 +11,11 @@ class IngredientsController < ApplicationController
         ingredients.each do |food| 
             included = Food.where(id: food.food_id)
             included.each do |f|
-                @included << f
+                @included << f.nutrient_hash
                 @calculations += f.calories
             end
         end
+        @meal.update(nutrient_hash: @included)
         @meal.update(calorie_count: @calculations)
     end
 
