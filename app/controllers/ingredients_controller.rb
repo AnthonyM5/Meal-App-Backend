@@ -38,5 +38,13 @@ class IngredientsController < ApplicationController
     def get_meal 
         @meal = Meal.find_by_id(params[:meal_id])
     end
+
+    def destroy
+        byebug
+    end
+
+    def show
+        render json: @meal.ingredients.find_by_id(params[:id])
+    end
     
 end
