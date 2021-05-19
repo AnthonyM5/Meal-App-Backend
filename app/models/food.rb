@@ -68,4 +68,44 @@ class Food < ApplicationRecord
     end
 
 
+    def self.search_by_query(query)
+        where("name LIKE ?", "%#{query}%")
+    end
+
+    def self.sort_by_options(sort_option)
+        case sort_option
+        when "Carbs"
+            order(carbs: :desc)
+        when "Calories"
+            order(calories: :desc)
+        when "Selenium"
+            order(selenium: :desc)
+        when "Protein"
+            order(protein: :desc)
+        when "Fiber"
+            order(fiber: :desc)
+        when "Saturated fat"
+            order(sat_fats: :desc)
+        when "Polyunsaturated fat"
+            order(poly_unsat_fats: :desc)
+        when "Water"
+            order(water: :desc)
+        when "Cholesterol"
+            order(cholesterol: :desc)
+        when "Zinc"
+            order(zinc: :desc)
+        when "Glucose"
+            order(glucose: :desc)
+        when "Iron" 
+            order(iron: :desc)
+        when "Starch"
+            order(starch: :desc)
+        when "Total Sugar"
+            order(total_sugar: :desc)
+        else
+            all
+        end
+    end
+
+
 end
